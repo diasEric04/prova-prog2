@@ -1,0 +1,1 @@
+-L/home/edias/Qt/6.7.2/gcc_64/lib -I/home/edias/Qt/6.7.2/gcc_64/include -I/home/edias/Qt/6.7.2/gcc_64/include/QtCore -I/home/edias/Qt/6.7.2/gcc_64/include/QtGui -I/home/edias/Qt/6.7.2/gcc_64/include/QtWidgets -I/home/edias/Qt/6.7.2/gcc_64/include/QtNetwork -I/home/edias/Qt/6.7.2/gcc_64/include/QtPrintSupport -lQt6Core -lQt6Gui -lQt6Widgets -lQt6Network -lQt6PrintSupport  -fPIC
