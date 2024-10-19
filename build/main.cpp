@@ -8,6 +8,8 @@
 #include <sstream>
 #include <algorithm>
 #include <QLayout>
+#include <QFile>
+#include <QMessageBox>
 
 int main (int argc, char **argv) {
     QApplication app(argc, argv);
@@ -15,12 +17,20 @@ int main (int argc, char **argv) {
     Dialog *d = new Dialog();
     d->setWindowTitle("Eric Arruda Dias");
 
-    std::ifstream file {"mapa-rs.txt"};
+    QFile file ("mapa-rs.txt");
 
-    std::string line;
+    if (!file.open(QIODevice::ReadOnly | QIODevice::Text)) return -1;
+
+    QTextStream in (&file);
+
     bool isCity = true;
-    while (getline(file, line)) {
-        std::istringstream ss {line};
+    while (!in.atEnd()) {
+        QString line {in.readLine()};
+        if (line.split(" ").length() != 3 && !line.isEmpty()) {
+            QMessageBox::critical(d, "Erro", "Alguma linha no arquivo de input está incorreta");
+            return -1;
+        }
+        std::istringstream ss {line.toStdString()};
         if (isCity) {
             std::string cidade, x, y;
             ss >> cidade >> x >> y;
