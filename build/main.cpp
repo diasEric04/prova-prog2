@@ -45,12 +45,17 @@ int main (int argc, char **argv) {
             ss >> cityStartName >> cityEndName >> distance;
             City *cityStart = d->findCity(cityStartName);
             City *cityEnd = d->findCity(cityEndName);
+
+            cityStart->addNeighbor(cityEnd);
+            cityEnd->addNeighbor(cityStart);
             // qDebug() << cityStart->getName() << cityStart->getX() << cityStart->getY() << "|" << cityEnd->getName() << cityEnd->getX() << cityEnd->getY();
-            Road *newRoad = new Road {cityStart, cityEnd, atoi(distance.c_str()), d};
+            Road *newRoad = new Road {cityStart, cityEnd, std::stoi(distance.c_str()), d};
+            // qDebug() << cityStart->getName() << cityEnd->getName() << newRoad->getDistance();
             d->appendRoad(newRoad);
         }
     }
 
+    d->raiseCities();
     d->show();
 
     return app.exec();
