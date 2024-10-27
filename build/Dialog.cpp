@@ -95,9 +95,10 @@ std::vector<City*> Dialog::getShortestRoute() {
         visited.push_back(node->getName());
     }
 
+    int i {};
     std::vector<std::vector<int>> distances;
     for (auto route : validRoutes) {
-        qDebug() << "rota";
+        qDebug() << "rota" << ++i;
         for (auto city : route) {
             qDebug() << city->getName();
         }
@@ -126,6 +127,8 @@ std::vector<City*> Dialog::getShortestRoute() {
     );
 
     int minIndex = std::distance(distances.begin(), minIt);
+
+    qDebug() << "rota escolhida:" << minIndex+1;
 
     return validRoutes[minIndex];
 }

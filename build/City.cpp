@@ -18,9 +18,12 @@ void City::toggleColors (bool fTurnYellow) {
     if (fTurnYellow) {
         bgColor = Qt::yellow;
         textColor = Qt::black;
-    } else {
+    } else if (bgColor != Qt::yellow) {
         bgColor = (bgColor == Qt::black) ? Qt::green : Qt::black;
         textColor = (textColor == Qt::white) ? Qt::black : Qt::white;
+    } else {
+        bgColor = Qt::green;
+        textColor = Qt::black;
     }
 
     update();
