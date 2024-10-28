@@ -95,6 +95,11 @@ std::vector<City*> Dialog::getShortestRoute() {
         visited.push_back(node->getName());
     }
 
+
+    qDebug() << "#################################################";
+    qDebug() << fstCity->getName() << "até" << sndCity->getName();
+    qDebug() << "";
+
     int i {};
     std::vector<std::vector<int>> distances;
     for (auto route : validRoutes) {
